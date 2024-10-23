@@ -55,12 +55,11 @@ is used for authentication in TLS 1.3.
 
 # Introduction
 
-ML-DSA {{!FIPS204=DOI.10.6028/NIST.FIPS.204}} is one of the first
-two post-quantum signature schemes standardised by NIST. It is a
+ML-DSA {{!FIPS204=DOI.10.6028/NIST.FIPS.204}} is a post-quantum signature scheme standardised by NIST. It is a
 module-lattice based scheme.
 
 This memo specifies how ML-DSA can be negotiated for authentication in TLS 1.3
-via the "signature_algorithms" extension.
+via the "signature_algorithms" and "signature_algorithms_cert" extensions.
 
 # Conventions and Definitions
 
@@ -81,16 +80,15 @@ enum {
 ~~~
 
 These correspond to ML-DSA-44, ML-DSA-64, and ML-DSA-87 defined
-in {{FIPS204}} respectively. Note that these should not be confused
-with prehashed variants such as HashML-DSA-44 also defined in {{FIPS204}}:
-we use the pure version.
+in {{FIPS204}} respectively. Note that these are the pure versions and should not be confused
+with prehashed variants such as HashML-DSA-44 also defined in {{FIPS204}}.
 
 Similarly, the context parameter defined in {{FIPS204}} Algorithm 2/Algorithm 3
 MUST be the empty string.
 
 The corresponding end-entity certificate when negotiated must
-use id-ML-DSA-44, id-ML-DSA-64, id-ML-DSA-87 respectively as
-defined in {{I-D.ietf-lamps-dilithium-certificates}}.
+use id-ML-DSA-44, id-ML-DSA-64, id-ML-DSA-87 respectively
+as defined in {{I-D.ietf-lamps-dilithium-certificates}}.
 
 # Security Considerations
 
@@ -99,7 +97,7 @@ TODO Security
 
 # IANA Considerations
 
-This document requests a new entry to the TLS SignatureSchemes registry,
+This document requests new entries to the TLS SignatureScheme registry,
 according to the procedures in {{Section 6 of TLSIANA}}.
 
 | Value           | Description | Recommended | Reference      |
